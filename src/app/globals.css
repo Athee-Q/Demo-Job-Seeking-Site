@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* ADD THIS for dark variant globally */
+@custom-variant dark (&:is(.dark *));
+
+/* Define Theme Variables */
+@theme {
+  /* Light Mode Colors */
+  --color-primary: #1877f2; /* Facebook Blue */
+  --color-background: #f0f2f5; /* Paperwhite */
+  --color-accent: #00a400; /* Islamic Green */
+  --color-alert: #fa383e; /* Coral Red */
+  --color-text: #050315; /* Very Dark Text */
+
+  /* Dark Mode Colors */
+  --color-dark-primary: #3a31d8; /* Dark Facebook Blue */
+  --color-dark-background: #010104; /* Dark Paperwhite */
+  --color-dark-accent: #0600c2; /* Dark Islamic Green */
+  --color-dark-alert: #fa383e; /* Coral Red */
+  --color-dark-text: #eae9fc; /* Very Light Text */
+}
+
+/* Basic Styling */
+body {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
