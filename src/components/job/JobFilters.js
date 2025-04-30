@@ -1,6 +1,6 @@
 export default function JobFilters({ filters, setFilters }) {
   return (
-    <div className="flex flex-wrap gap-4 justify-center bg-white dark:bg-dark-background p-6 rounded-md shadow-md mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center bg-white dark:bg-dark-background p-6 rounded-md inset-shadow-accent mb-8">
       <input
         className=" border border-accent text-accent  p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
         placeholder="Location"

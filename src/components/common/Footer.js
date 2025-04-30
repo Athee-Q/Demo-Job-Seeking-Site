@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
+import Logo from "./Logo";
 
 const footerLinks = [
   { title: "Home", href: "/" },
@@ -31,13 +32,7 @@ export default function Footer() {
       >
         {/* Branding */}
         <div className="flex flex-col gap-4">
-          <Link
-            href="/"
-            className="text-2xl font-bold flex items-center gap-2 text-(--color-primary) dark:text-(--color-dark-primary)"
-          >
-            <MdWork className="text-3xl text-(--color-text) dark:text-(--color-dark-text) " />
-            TalentHive
-          </Link>
+          <Logo />
           <p className="text-lg text-(--color-text)/50 dark:text-(--color-dark-text)/50 leading-relaxed">
             Connecting talent with opportunity. Empowering job seekers to find
             their dream careers and grow.

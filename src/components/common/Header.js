@@ -9,6 +9,7 @@ import { FaSun, FaMoon, FaUserCircle } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { MdWork, MdHome, MdInfo, MdContactMail } from "react-icons/md";
+import Logo from "./Logo";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -44,18 +45,11 @@ export default function Header() {
     <header className="sticky z-50 top-0 left-0 w-full flex items-center justify-between h-18 md:h-20 lg:h-24 bg-white  dark:bg-gray-900 shadow-lg  dark:shadow-sm shadow-gray-300 ">
       {/* Logo */}
       <div className="w-full flex justify-between items-center px-4 lg:px-8 py-4 lg:py-6 ">
-        <Link
-          href="/"
-          className="text-2xl font-bold flex items-center gap-2 text-(--color-primary) dark:text-(--color-dark-primary)"
-        >
-          <MdWork className="text-3xl text-(--color-text) dark:text-(--color-dark-text) " />
-          TalentHive
-        </Link>
+        <Logo />
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen((prev) => !prev)}
-          onBlur={() => setMenuOpen(false)}
           className=" lg:hidden  text-2xl text-(--color-primary) dark:text-(--color-dark-primary) focus:outline-none"
         >
           <IoMenu />
@@ -65,7 +59,7 @@ export default function Header() {
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex w-full items-center gap-8 ">
         <div className="flex items-center gap-4">
-          {navigationLinks.map(({ name, href, icon },index) => (
+          {navigationLinks.map(({ name, href, icon }, index) => (
             <Link
               key={index}
               href={href}
@@ -140,16 +134,9 @@ export default function Header() {
       </nav>
 
       {menuOpen && (
-        <div className="absolute top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg flex flex-col gap-6 px-6 py-8 z-40 animate-slide-in">
+        <div className="absolute top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-lg flex flex-col gap-6 px-6 py-8 z-50 animate-slide-in">
           <div className="flex justify-between items-center mb-8">
-            <Link
-              href="/"
-              className="text-2xl font-bold flex items-center gap-2 text-[var(--color-primary)] dark:text-[var(--color-dark-primary)]"
-              onClick={() => setMenuOpen(false)}
-            >
-              <MdWork className="text-3xl" />
-              TalentHive
-            </Link>
+            <Logo />
             <button
               onClick={() => setMenuOpen(false)}
               className="text-3xl text-[var(--color-primary)] dark:text-[var(--color-dark-primary)] focus:outline-none"
@@ -170,24 +157,26 @@ export default function Header() {
             </Link>
           ))}
           {status === "authenticated" && (
-            <Link
-              href="/profile"
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-2 text-[var(--color-text)] dark:text-[var(--color-dark-text)] hover:text-[var(--color-primary)] dark:hover:text-[var(--color-dark-primary)] transition-all duration-300 font-semibold text-xl"
-            >
-              <FaUserCircle />
-              Profile
-            </Link>
+            <>
+              <Link
+                href="/profile"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-2 text-[var(--color-text)] dark:text-[var(--color-dark-text)] hover:text-[var(--color-primary)] dark:hover:text-[var(--color-dark-primary)] transition-all duration-300 font-semibold text-xl"
+              >
+                <FaUserCircle />
+                Profile
+              </Link>
+              <button
+                onClick={() => {
+                  signOut({ callbackUrl: "/" });
+                  setMenuOpen(false);
+                }}
+                className="text-left text-red-600 hover:underline font-semibold text-xl"
+              >
+                Logout
+              </button>
+            </>
           )}
-          <button
-            onClick={() => {
-              signOut({ callbackUrl: "/" });
-              setMenuOpen(false);
-            }}
-            className="text-left text-red-600 hover:underline font-semibold text-xl"
-          >
-            Logout
-          </button>
 
           <div className="flex flex-col gap-4 mt-8">
             <button

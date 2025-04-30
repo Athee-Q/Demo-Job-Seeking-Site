@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MdWork } from "react-icons/md";
+import Logo from "@/components/common/Logo";
 
 const RegisterPage = () => {
   const [fullName, setFullName] = useState("");
@@ -33,9 +34,8 @@ const RegisterPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-background text-text dark:bg-dark-background dark:text-dark-text transition-colors duration-300">
       <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl shadow-xl p-8 sm:p-10">
-        <div className="mb-6 flex items-center gap-2 text-primary dark:text-dark-primary text-2xl font-bold justify-center">
-          <MdWork className="text-3xl text-text dark:text-dark-text" />
-          TalentHive
+        <div className="flex items-center justify-center mb-6">
+          <Logo />
         </div>
 
         <h2 className="text-xl font-semibold text-center mb-6">
